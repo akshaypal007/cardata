@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h1 class="text-center">CAR DATA..</h1>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <h3>Search Here..</h3>
+            <input type="text" class="form-control" [(ngModel)]="keyword">
+        </div>
+    </div>
+</div><br><br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr class="active">
+                        <th class="text-center">MODEL</th>
+                        <th class="text-center">PRICE</th>
+                        <th class="text-center">FUEL-TYPE</th>
+                        <th class="text-center">VERSION</th>
+                        <th class="text-center">MILEAGE</th>
+                        <th class="text-center">CATEGORY</th>
+                        <th class="text-center">SERVICIN STATUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of mycar | paginate: { itemsPerPage: 9, currentPage: p} | filter:keyword">
+                        <td class="text-center">{{x.model}}</td>
+                        <td class="text-center">{{x.price}}</td>
+                        <td class="text-center">{{x.fuelType}}</td>
+                        <td class="text-center">{{x.version}}</td>
+                        <td class="text-center">{{x.mileage}}</td>
+                        <td class="text-center">{{x.category.vechicleType}}</td>
+                        <td class="text-center">{{x.status.isServiceDone}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <pagination-controls class="text-center" (pageChange)="p=$event"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+
+
